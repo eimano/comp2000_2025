@@ -3,16 +3,31 @@ import java.awt.*;
 class Cell {
     int x;
     int y;
+    static int size = 35;
 
     public Cell(int x, int y){
         this.x = x;
         this.y = y;
     }
 
-    void paint(Graphics g){
+    void paint(Graphics g, Point mouse){
+        if (contains(mouse)){
+            g.setColor(Color.GRAY);
+        } else {
+    
         g.setColor(Color.BLACK);
-            g.fillRect(x, y, 35, 35);
+        }
+            g.fillRect(x, y, size, size);
             g.setColor(Color.WHITE);
-            g.drawRect(x, y, 35, 35);
+            g.drawRect(x, y, size, size);
+    
+    }
+
+    boolean contains (Point p){
+        if (p != null){
+            return ( x < p.x && x + size > p.x && y < p.y && y + size > p.y);
+        } else {
+            return false;
+        }
     }
 }

@@ -5,6 +5,7 @@ import java.awt.*;
 public class Main extends JFrame {
     public static void main(String[] args) throws Exception {
 Main window = new Main();
+window.run();
       
     }
 
@@ -19,9 +20,11 @@ class Canvas extends JPanel {
 
 @Override
 public void paint(Graphics g){
-    grid.paint(g);
+    grid.paint(g, getMousePosition());
 
 }
+
+
 }
 
  private Main() {
@@ -30,5 +33,13 @@ public void paint(Graphics g){
       this.setContentPane(canvas);
       this.pack();
       this.setVisible(true);
+      
  }
+
+ public void run() {
+        while(true){
+            this.repaint();
+        }
+    }
+
 }
