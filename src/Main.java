@@ -33,6 +33,7 @@ class Canvas extends JPanel {
 
 @Override
 public void paint(Graphics g){
+    super.paintComponent(g);
     grid.paint(g, getMousePosition());
 
 }
@@ -46,13 +47,14 @@ public void paint(Graphics g){
       this.setContentPane(canvas);
       this.pack();
       this.setVisible(true);
+
+       Timer timer = new Timer(30, e -> repaint());
+       timer.start();
+
       
  }
-
  public void run() {
-        while(true){
-            this.repaint();
-        }
-    }
+    
+  } 
 
 }

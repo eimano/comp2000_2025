@@ -1,6 +1,6 @@
 import java.awt.*;
 
-class Cell {
+public class Cell implements drawable {
     int x;
     int y;
     static int size = 35;
@@ -9,9 +9,10 @@ class Cell {
         this.x = x;
         this.y = y;
     }
+    protected boolean revealed = false;
 
-   
-    void paint(Graphics g, Point mouse){
+   @Override
+   public void paint(Graphics g, Point mouse){
         if (contains(mouse)){
             g.setColor(Color.LIGHT_GRAY);
         } 
