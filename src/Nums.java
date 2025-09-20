@@ -25,10 +25,11 @@ g.setColor(Color.LIGHT_GRAY);
  g.setColor(Color.GRAY); 
 } g.fillRect(x, y, size, size); 
 g.setColor(Color.WHITE); g.drawRect(x, y, size, size); 
+
 if (flagged && !revealed) { 
-g.setColor(Color.RED); 
-g.fillRect(x + size/4, y + size/4, size/2, size/2);
+g.drawString("🚩", x + size/2 - 4, y + size/2 + 4);
  }
+
  if (revealed && number > 0) { 
 Color[] colors = { 
 Color.BLACK,
