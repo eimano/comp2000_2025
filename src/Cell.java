@@ -10,16 +10,20 @@ class Cell {
         this.y = y;
     }
 
+   
     void paint(Graphics g, Point mouse){
         if (contains(mouse)){
-            g.setColor(Color.GRAY);
-        } else {
+            g.setColor(Color.LIGHT_GRAY);
+        } 
+        
+        else {
     
-        g.setColor(Color.BLACK);
+        g.setColor(Color.GRAY);
         }
             g.fillRect(x, y, size, size);
             g.setColor(Color.WHITE);
             g.drawRect(x, y, size, size);
+
     
     }
 
