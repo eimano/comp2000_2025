@@ -15,6 +15,19 @@ class Canvas extends JPanel {
   setPreferredSize(new Dimension( 720, 720));
  grid = new Grid();
 
+  addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mousePressed(java.awt.event.MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+
+        int row = (x - 10) / Cell.size;
+        int col = (y - 10) / Cell.size;
+         
+        repaint(); 
+    }
+});
+
 
     }
 
