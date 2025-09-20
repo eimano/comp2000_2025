@@ -13,5 +13,15 @@ public class Mines extends Cell {
         }
     }
 
+     @Override 
+    public boolean isMine() { 
+        return true; 
+    }
+
+    @Override
+     public int getNumber() {
+         return -1; 
+        }
+
     
 }

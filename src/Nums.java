@@ -11,5 +11,15 @@ public void setNums(int number) {
 this.number = number; 
 
 } 
+
+@Override 
+public boolean isMine() { 
+return false; } 
+
+@Override 
+public int getNumber() { 
+return number;
+ } 
+
     
 }

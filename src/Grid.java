@@ -7,7 +7,9 @@ private final ArrayList<ArrayList<Cell>> cells;
  int rows = 20;
  int cols = 20;
     int mines = 56;
+    private boolean won = false;
 private boolean gameOver = false;
+protected boolean flagged = false;
 
     public Grid(){
          cells = new ArrayList<>();
@@ -60,6 +62,51 @@ private int countAdjacentMines(int r, int c){
         }
     }
     }
+
+    private void revealAllMines() { 
+    for (ArrayList<Cell> row : cells) {
+        for (Cell c : row) {
+            if (c.isMine()) {
+                c.reveal();
+            }
+        }
+    }
+}
+     public void revealCell(int r, int c){
+        if (gameOver){
+            return;
+        }
+       if(r < 0 || r >= rows || c < 0 || c >= cols) return;
+        Cell cell = cells.get(r).get(c);
+        if(cell.isRevealed() || cell.flagged) return;
+
+       cell.reveal();
+      
+       if (cell.isMine()) {
+         gameOver = true; 
+         revealAllMines();
+         return; } // NEW
+         
+       if (cell.getNumber() == 0) {                    
+           for(int dr = -1; dr <= 1; dr++){
+               for(int dc = -1; dc <= 1; dc++){
+                   if (dr != 0 || dc != 0) revealCell(r + dr, c + dc);
+               }
+           }
+       }
+       checkWin();   
+    }
+
+    private void checkWin() {   // NEW
+       for (ArrayList<Cell> row : cells) {
+           for (Cell c : row) {
+               if (!c.isMine() && !c.isRevealed()) return;
+           }
+       }
+       won = true;
+       gameOver = true;
+      
+        }
 
     
 }

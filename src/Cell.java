@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Cell implements drawable {
+public abstract class Cell implements drawable {
     int x;
     int y;
     static int size = 35;
@@ -10,6 +10,19 @@ public class Cell implements drawable {
         this.y = y;
     }
     protected boolean revealed = false;
+    protected boolean flagged = false;
+
+
+    public void reveal() { 
+        revealed = true; 
+    }  
+   public boolean isRevealed() { 
+    return revealed;
+ }
+
+ public abstract boolean isMine();
+ public abstract int getNumber();
+
 
    @Override
    public void paint(Graphics g, Point mouse){
